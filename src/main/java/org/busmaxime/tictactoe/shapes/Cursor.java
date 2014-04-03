@@ -1,6 +1,7 @@
 package org.busmaxime.tictactoe.shapes;
 
 /**
+ * Represents the cursor that indicates which case on the board is selected.
  *
  * @author maxime
  */

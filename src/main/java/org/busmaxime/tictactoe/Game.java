@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 import org.busmaxime.tictactoe.shapes.Board;
-import org.busmaxime.tictactoe.utils.Constants;
+import org.busmaxime.tictactoe.utils.GameConstants;
 import org.busmaxime.tictactoe.renderers.LwjglRenderer;
 import org.busmaxime.tictactoe.shapes.Circle;
 import org.busmaxime.tictactoe.shapes.Cross;
@@ -35,7 +35,7 @@ public class Game extends AbstractGameLoop {
 
     @Override
     public void init() {
-        renderer.init(Constants.WINDOW_WIDTH, Constants.WINDOW_HEIGHT);
+        renderer.init(GameConstants.WINDOW_WIDTH, GameConstants.WINDOW_HEIGHT);
         cursor = new Cursor(0, 0);
         board = new Board();
     }

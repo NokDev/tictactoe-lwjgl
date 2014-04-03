@@ -1,6 +1,7 @@
 package org.busmaxime.tictactoe.shapes;
 
 /**
+ * Background displayed when player 1 wins.
  *
  * @author maxime
  */

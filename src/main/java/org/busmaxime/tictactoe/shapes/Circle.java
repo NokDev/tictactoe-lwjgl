@@ -1,6 +1,7 @@
 package org.busmaxime.tictactoe.shapes;
 
 /**
+ * Represents the element of the player 2.
  *
  * @author maxime
  */

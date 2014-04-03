@@ -2,7 +2,7 @@ package org.busmaxime.tictactoe.renderers;
 
 import java.util.List;
 import org.busmaxime.tictactoe.shapes.AbstractEntity;
-import org.busmaxime.tictactoe.utils.Constants;
+import org.busmaxime.tictactoe.utils.GameConstants;
 import org.lwjgl.LWJGLException;
 import org.lwjgl.opengl.Display;
 import org.lwjgl.opengl.DisplayMode;
@@ -14,6 +14,12 @@ import org.lwjgl.opengl.GL11;
  */
 public class LwjglRenderer {
 
+    /**
+     * Create the main window in which all the elements will be drawn. It also activate openGL options like enabling alpha channel for PNG.
+     *
+     * @param width
+     * @param height
+     */
     public void init(int width, int height) {
         try {
             Display.setDisplayMode(new DisplayMode(width, height));
@@ -28,7 +34,7 @@ public class LwjglRenderer {
         GL11.glTexEnvf(GL11.GL_TEXTURE_ENV, GL11.GL_TEXTURE_ENV_MODE, GL11.GL_MODULATE);
         GL11.glMatrixMode(GL11.GL_PROJECTION);
         GL11.glLoadIdentity();
-        GL11.glOrtho(0, Constants.WINDOW_WIDTH, 0, Constants.WINDOW_HEIGHT, 1, -1);
+        GL11.glOrtho(0, GameConstants.WINDOW_WIDTH, 0, GameConstants.WINDOW_HEIGHT, 1, -1);
         GL11.glMatrixMode(GL11.GL_MODELVIEW);
     }
 

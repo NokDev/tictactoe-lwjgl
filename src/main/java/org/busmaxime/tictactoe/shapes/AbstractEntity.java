@@ -55,7 +55,7 @@ public abstract class AbstractEntity {
      *   |       |         |       |
      *    -------           -------
      * (0,1)   (1,1)     (0,0)   (0,1)
-     * </pre>
+     * </pre> So, in order to apply texture in the good way, top-left coordinate of (1) should be associated to top-left coordinate of (2)
      */
     public void draw() {
         texture.bind();

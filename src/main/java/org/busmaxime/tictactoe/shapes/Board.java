@@ -1,6 +1,7 @@
 package org.busmaxime.tictactoe.shapes;
 
 /**
+ * Represents the background.
  *
  * @author maxime
  */
