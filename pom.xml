@@ -24,6 +24,15 @@
                 <enabled>true</enabled>
             </snapshots>
         </repository>
+        <repository>
+            <id>slick</id>
+            <name>slicke repo</name>
+            <url>http://nifty-gui.sourceforge.net/nifty-maven-repo/</url>
+            <snapshots>
+                <enabled>true</enabled>
+            </snapshots>
+        </repository>		
+		
     </repositories>
     <dependencies>
         <dependency>
@@ -42,8 +51,8 @@
         it's only present in my local repository -->
         <dependency>
             <groupId>slick</groupId>
-            <artifactId>utils</artifactId>
-            <version>1.0.0</version>
+            <artifactId>slick</artifactId>
+            <version>20121001-264</version>
         </dependency>
     </dependencies>
     <build>
