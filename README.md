@@ -28,7 +28,7 @@ For the moment, when the game finished you should restart it to begin another ga
 It's possible when a player wins to press space key to close the game.
 
 #Improvments
-The game is not finished yet. But this features may appear later :
+The game is not finished yet. But these features may appear later :
 
 - set the number of cases that compose the board.
 - set the number of symbols that is required to win a game.
