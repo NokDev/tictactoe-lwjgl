@@ -3,8 +3,7 @@ package org.busmaxime.tictactoe;
 import org.lwjgl.Sys;
 
 /**
- * Represents the skeleton of a basic game loop. To run the game, you need to call the <strong>run</strong> method. But before this, you should redefine the
- * following methods : <br/>
+ * Represents the skeleton of a basic game loop. To run the game, you need to call the <strong>run</strong> method. But before this, you should redefine the following methods : <br/>
  * <ul>
  * <li><strong>init</strong>: this method is used to initialize resources.</li>
  * <li><strong>update</strong>: this method is used to update the state of the game.</li>
@@ -59,12 +58,12 @@ public abstract class AbstractGameLoop {
      *
      * @return true if the game loop should stop, false otherwise.
      */
-    public abstract boolean isGameShouldStop();
+    public abstract boolean doesTheGameMustStop();
 
     public void run() {
         init();
 
-        while (!isGameShouldStop()) {
+        while (!doesTheGameMustStop()) {
             long delta = getDelta();
 
             update(delta);
