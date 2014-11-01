@@ -33,13 +33,13 @@ public class Renderer {
         texture.bind();
         GL11.glBegin(GL11.GL_QUADS);
         GL11.glTexCoord2f(0, textureHeight);
-        GL11.glVertex2d(row * GameConstants.SPRITE_PIXEL_WIDTH, column * GameConstants.SPRITE_PIXEL_HEIGHT);
+        GL11.glVertex2f(row * GameConstants.SPRITE_PIXEL_WIDTH, column * GameConstants.SPRITE_PIXEL_HEIGHT);
         GL11.glTexCoord2f(0, 0);
-        GL11.glVertex2d(row * GameConstants.SPRITE_PIXEL_WIDTH, column * GameConstants.SPRITE_PIXEL_HEIGHT + GameConstants.SPRITE_PIXEL_HEIGHT);
+        GL11.glVertex2f(row * GameConstants.SPRITE_PIXEL_WIDTH, column * GameConstants.SPRITE_PIXEL_HEIGHT + GameConstants.SPRITE_PIXEL_HEIGHT);
         GL11.glTexCoord2f(textureWidth, 0);
-        GL11.glVertex2d(row * GameConstants.SPRITE_PIXEL_WIDTH + GameConstants.SPRITE_PIXEL_WIDTH, column * GameConstants.SPRITE_PIXEL_HEIGHT + GameConstants.SPRITE_PIXEL_HEIGHT);
+        GL11.glVertex2f(row * GameConstants.SPRITE_PIXEL_WIDTH + GameConstants.SPRITE_PIXEL_WIDTH, column * GameConstants.SPRITE_PIXEL_HEIGHT + GameConstants.SPRITE_PIXEL_HEIGHT);
         GL11.glTexCoord2f(textureWidth, textureHeight);
-        GL11.glVertex2d(row * GameConstants.SPRITE_PIXEL_WIDTH + GameConstants.SPRITE_PIXEL_WIDTH, column * GameConstants.SPRITE_PIXEL_HEIGHT);
+        GL11.glVertex2f(row * GameConstants.SPRITE_PIXEL_WIDTH + GameConstants.SPRITE_PIXEL_WIDTH, column * GameConstants.SPRITE_PIXEL_HEIGHT);
         GL11.glEnd();
     }
 }
