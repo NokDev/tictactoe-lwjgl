@@ -1,7 +1,7 @@
 package org.busmaxime.tictactoe.shapes;
 
 /**
- * Represents the background.
+ * Represents the board.
  *
  * @author maxime
  */
@@ -33,8 +33,13 @@ public class Board {
     }
 
     public void moveCursorBy(int deltaRow, int deltaColumn) {
-        rowCursor += deltaRow;
-        columnCursor += deltaColumn;
+        if (rowCursor + deltaRow < rows && rowCursor + deltaRow >= 0) {
+            rowCursor += deltaRow;
+        }
+
+        if (columnCursor + deltaColumn < columns && columnCursor + deltaColumn >= 0) {
+            columnCursor += deltaColumn;
+        }
     }
 
     public void setStateAt(int row, int column, int state) {
