@@ -1,5 +1,8 @@
 package org.busmaxime.tictactoe;
 
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import org.busmaxime.tictactoe.exceptions.CaseAlreadyFilledException;
 import org.busmaxime.tictactoe.shapes.Board;
 import org.busmaxime.tictactoe.utils.GameConstants;
 import org.busmaxime.tictactoe.renderers.BoardRenderer;
@@ -7,6 +10,7 @@ import org.lwjgl.input.Keyboard;
 import org.lwjgl.opengl.Display;
 
 public class Game extends AbstractGameLoop {
+    private static final Logger LOGGER = Logger.getLogger(Game.class.getName());
 
     private BoardRenderer boardRenderer;
     private int win = 0;
@@ -58,20 +62,16 @@ public class Game extends AbstractGameLoop {
                     board.moveCursorBy(1, 0);
                 }
                 if (Keyboard.getEventKey() == Keyboard.KEY_SPACE) {
-                    if (playerOneTurn) {
-                        if (board.getStateAtCursorPosition() != 0) {
-                            System.out.println("There's already something here.");
-                        } else {
+                    try {
+                        if (playerOneTurn) {
                             board.setStateAtCursorPosition(1);
                             playerOneTurn = false;
-                        }
-                    } else {
-                        if (board.getStateAtCursorPosition() != 0) {
-                            System.out.println("There's already something here.");
                         } else {
                             board.setStateAtCursorPosition(2);
                             playerOneTurn = true;
                         }
+                    } catch (CaseAlreadyFilledException cafe) {
+                        LOGGER.log(Level.INFO, cafe.getMessage());
                     }
                 }
             }

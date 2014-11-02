@@ -1,5 +1,7 @@
 package org.busmaxime.tictactoe.shapes;
 
+import org.busmaxime.tictactoe.exceptions.CaseAlreadyFilledException;
+
 /**
  * Represents the board.
  *
@@ -28,22 +30,32 @@ public class Board {
     }
 
     public void moveCursorAt(int row, int column) {
-        rowCursor = row;
-        columnCursor = column;
+        if (row < rows && row >= 0) {
+            rowCursor = row;
+        }
+
+        if (column < columns && column >= 0) {
+            columnCursor = column;
+        }
     }
 
     public void moveCursorBy(int deltaRow, int deltaColumn) {
-        if (rowCursor + deltaRow < rows && rowCursor + deltaRow >= 0) {
-            rowCursor += deltaRow;
-        }
-
-        if (columnCursor + deltaColumn < columns && columnCursor + deltaColumn >= 0) {
-            columnCursor += deltaColumn;
-        }
+        this.moveCursorAt(rowCursor + deltaRow, columnCursor + deltaColumn);
     }
 
+    /**
+     *
+     * @param row
+     * @param column
+     * @param state
+     * @throws CaseAlreadyFilledException
+     */
     public void setStateAt(int row, int column, int state) {
-        this.boardState[row][column] = state;
+        if (this.boardState[row][column] == 0) {
+            this.boardState[row][column] = state;
+        } else {
+            throw new CaseAlreadyFilledException();
+        }
     }
 
     public void setStateAtCursorPosition(int state) {
@@ -55,6 +67,14 @@ public class Board {
     }
 
     public int getStateAt(int row, int column) {
+        if (row > rows || row < 0) {
+            return 0;
+        }
+
+        if (column > columns || column < 0) {
+            return 0;
+        }
+
         return this.boardState[row][column];
     }
 

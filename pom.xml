@@ -13,6 +13,7 @@
         <natives.version>0.0.6</natives.version>
         <lwjgl.version>2.8.2</lwjgl.version>
         <junit.version>4.10</junit.version>
+        <assertj.version>1.7.0</assertj.version>
     </properties>
 
     <repositories>
@@ -46,6 +47,13 @@
             <version>${junit.version}</version>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>org.assertj</groupId>
+            <artifactId>assertj-core</artifactId>
+            <version>${assertj.version}</version>
+            <scope>test</scope>
+        </dependency>
+
 
         <!-- this dependency can't be found anywhere,
         it's only present in my local repository -->
