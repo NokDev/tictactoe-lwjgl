@@ -3,12 +3,6 @@
 ##Maven
 The project is built with maven. You must have it installed on your machine.
 
-##Slick-utils
-
-The project uses slick-utils library. Since it doesn't exist in maven central repository, you should download it [here](http://slick.ninjacave.com/slick-util.jar), and run this maven command (in order to install it in your local repository) :
-
-`mvn install:install-file -Dfile=slick-util.jar -DgroupId=slick -DartifactId=utils -Dversion=1.0.0 -Dpackaging=jar`
-
 #Build the game
 After checking out the project sources, go to the root of the project then run :
 
