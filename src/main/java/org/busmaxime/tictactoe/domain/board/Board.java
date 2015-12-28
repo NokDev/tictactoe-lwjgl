@@ -115,4 +115,63 @@ public class Board {
     public void setColumnCursor(int columnCursor) {
         this.columnCursor = columnCursor;
     }
+
+    public int getWinner() {
+        // top row
+        if ((boardState[0][0] == boardState[0][1]) && (boardState[0][1] == boardState[0][2])) {
+            return boardState[0][0];
+        }
+
+        // middle row
+        if ((boardState[1][0] == boardState[1][1]) && (boardState[1][1] == boardState[1][2])) {
+            return boardState[1][0];
+        }
+
+        // bottom row
+        if ((boardState[2][0] == boardState[2][1]) && (boardState[2][1] == boardState[2][2])) {
+            return boardState[2][0];
+        }
+
+        // Check verticals
+        // left column
+        if ((boardState[0][0] == boardState[1][0]) && (boardState[1][0] == boardState[2][0])) {
+            return boardState[0][0];
+        }
+
+        // middle column
+        if ((boardState[0][1] == boardState[1][1]) && (boardState[1][1] == boardState[2][1])) {
+            return boardState[0][1];
+        }
+
+        // right column
+        if ((boardState[0][2] == boardState[1][2]) && (boardState[1][2] == boardState[2][2])) {
+            return boardState[0][2];
+        }
+
+        // Check diagonals
+        // one diagonal
+        if ((boardState[0][0] == boardState[1][1]) && (boardState[1][1] == boardState[2][2])) {
+            return boardState[0][0];
+        }
+
+        // the other diagonal
+        if ((boardState[0][2] == boardState[1][1]) && (boardState[1][1] == boardState[2][0])) {
+            return boardState[0][2];
+        }
+
+        // Check if the board is full
+        if (boardState[0][0] == 0
+                || boardState[0][1] == 0
+                || boardState[0][2] == 0
+                || boardState[1][0] == 0
+                || boardState[1][1] == 0
+                || boardState[1][2] == 0
+                || boardState[2][0] == 0
+                || boardState[2][1] == 0
+                || boardState[2][2] == 0) {
+            return 0;
+        }
+
+        return 3;
+    }
 }

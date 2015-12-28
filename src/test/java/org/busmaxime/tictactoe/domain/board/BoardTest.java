@@ -48,10 +48,19 @@ public class BoardTest {
 
     @Test
     public void it_should_return_zero_when_checking_case_outside_the_board() {
-        //Given
         Board board = new Board(5, 5);
 
-        //Then
         assertThat(board.getStateAt(7, 8)).isEqualTo(0);
+    }
+
+    @Test
+    public void the_board_can_compute_the_winner() throws Exception {
+        Board board = new Board(3, 3);
+
+        board.setStateAt(0, 0, 1);
+        board.setStateAt(0, 1, 1);
+        board.setStateAt(0, 2, 1);
+
+        assertThat(board.getWinner()).isEqualTo(1);
     }
 }
