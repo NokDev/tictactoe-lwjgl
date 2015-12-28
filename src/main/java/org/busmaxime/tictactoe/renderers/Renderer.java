@@ -1,6 +1,6 @@
 package org.busmaxime.tictactoe.renderers;
 
-import org.busmaxime.tictactoe.utils.GameConstants;
+import org.busmaxime.tictactoe.GameConstants;
 import org.lwjgl.opengl.GL11;
 import org.newdawn.slick.opengl.Texture;
 

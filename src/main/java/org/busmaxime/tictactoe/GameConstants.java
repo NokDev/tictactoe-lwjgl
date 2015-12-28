@@ -1,4 +1,4 @@
-package org.busmaxime.tictactoe.utils;
+package org.busmaxime.tictactoe;
 
 /**
  *

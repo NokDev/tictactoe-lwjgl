@@ -1,4 +1,4 @@
-package org.busmaxime.tictactoe.exceptions;
+package org.busmaxime.tictactoe.domain.board;
 
 /**
  *

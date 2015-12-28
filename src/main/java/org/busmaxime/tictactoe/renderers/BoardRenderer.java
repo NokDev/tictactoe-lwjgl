@@ -1,8 +1,8 @@
 package org.busmaxime.tictactoe.renderers;
 
 import java.io.IOException;
-import org.busmaxime.tictactoe.shapes.Board;
-import org.busmaxime.tictactoe.utils.GameConstants;
+import org.busmaxime.tictactoe.domain.board.Board;
+import org.busmaxime.tictactoe.GameConstants;
 import org.lwjgl.LWJGLException;
 import org.lwjgl.opengl.Display;
 import org.lwjgl.opengl.DisplayMode;

@@ -2,9 +2,8 @@ package org.busmaxime.tictactoe;
 
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import org.busmaxime.tictactoe.exceptions.CaseAlreadyFilledException;
-import org.busmaxime.tictactoe.shapes.Board;
-import org.busmaxime.tictactoe.utils.GameConstants;
+import org.busmaxime.tictactoe.domain.board.CaseAlreadyFilledException;
+import org.busmaxime.tictactoe.domain.board.Board;
 import org.busmaxime.tictactoe.renderers.BoardRenderer;
 import org.lwjgl.input.Keyboard;
 import org.lwjgl.opengl.Display;

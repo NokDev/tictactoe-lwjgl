@@ -1,6 +1,4 @@
-package org.busmaxime.tictactoe.shapes;
-
-import org.busmaxime.tictactoe.exceptions.CaseAlreadyFilledException;
+package org.busmaxime.tictactoe.domain.board;
 
 /**
  * Represents the board.
