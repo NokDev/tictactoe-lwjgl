@@ -1,8 +1,9 @@
 package org.busmaxime.lwjgl;
 
-import java.io.InputStream;
 import junit.framework.Assert;
 import org.junit.Test;
+
+import java.io.InputStream;
 
 public class ImageLoaderTest {
 

@@ -1,13 +1,9 @@
-package org.busmaxime.tictactoe.renderers;
+package org.busmaxime.tictactoe.infrastructure.lwjgl.renderers;
 
 import org.busmaxime.tictactoe.GameConstants;
 import org.lwjgl.opengl.GL11;
 import org.newdawn.slick.opengl.Texture;
 
-/**
- *
- * @author mbus
- */
 public class Renderer {
 
     /**
@@ -21,25 +17,26 @@ public class Renderer {
      *    -------           -------
      * (0,1)   (1,1)     (0,0)   (0,1)
      * </pre> So, in order to apply texture in the good way, top-left coordinate of (1) should be associated to top-left coordinate of (2)
-     *
-     * @param texture
-     * @param row
-     * @param column
      */
     public static void draw(Texture texture, int row, int column) {
         float textureWidth = texture.getWidth();
         float textureHeight = texture.getHeight();
 
         texture.bind();
+
         GL11.glBegin(GL11.GL_QUADS);
         GL11.glTexCoord2f(0, textureHeight);
-        GL11.glVertex2f(row * GameConstants.SPRITE_PIXEL_WIDTH, column * GameConstants.SPRITE_PIXEL_HEIGHT);
+        GL11.glVertex2f(column * GameConstants.SPRITE_PIXEL_WIDTH, row * GameConstants.SPRITE_PIXEL_HEIGHT);
+
         GL11.glTexCoord2f(0, 0);
-        GL11.glVertex2f(row * GameConstants.SPRITE_PIXEL_WIDTH, column * GameConstants.SPRITE_PIXEL_HEIGHT + GameConstants.SPRITE_PIXEL_HEIGHT);
+        GL11.glVertex2f(column * GameConstants.SPRITE_PIXEL_WIDTH, row * GameConstants.SPRITE_PIXEL_HEIGHT + GameConstants.SPRITE_PIXEL_HEIGHT);
+
         GL11.glTexCoord2f(textureWidth, 0);
-        GL11.glVertex2f(row * GameConstants.SPRITE_PIXEL_WIDTH + GameConstants.SPRITE_PIXEL_WIDTH, column * GameConstants.SPRITE_PIXEL_HEIGHT + GameConstants.SPRITE_PIXEL_HEIGHT);
+        GL11.glVertex2f(column * GameConstants.SPRITE_PIXEL_WIDTH + GameConstants.SPRITE_PIXEL_WIDTH, row * GameConstants.SPRITE_PIXEL_HEIGHT + GameConstants.SPRITE_PIXEL_HEIGHT);
+
         GL11.glTexCoord2f(textureWidth, textureHeight);
-        GL11.glVertex2f(row * GameConstants.SPRITE_PIXEL_WIDTH + GameConstants.SPRITE_PIXEL_WIDTH, column * GameConstants.SPRITE_PIXEL_HEIGHT);
+        GL11.glVertex2f(column * GameConstants.SPRITE_PIXEL_WIDTH + GameConstants.SPRITE_PIXEL_WIDTH, row * GameConstants.SPRITE_PIXEL_HEIGHT);
+
         GL11.glEnd();
     }
 }

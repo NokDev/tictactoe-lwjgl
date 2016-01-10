@@ -1,4 +1,4 @@
-package org.busmaxime.tictactoe;
+package org.busmaxime.tictactoe.infrastructure.lwjgl;
 
 import org.lwjgl.Sys;
 
@@ -30,6 +30,27 @@ import org.lwjgl.Sys;
 public abstract class AbstractGameLoop {
 
     private static long lastFrame;
+
+    /**
+     * Get the current time, in millis.
+     *
+     * @return the current time.
+     */
+    private static long getCurrentTime() {
+        return (Sys.getTime() * 1000) / Sys.getTimerResolution();
+    }
+
+    /**
+     * Compute time between each frame.
+     *
+     * @return the delta time.
+     */
+    private static long getDelta() {
+        long currentTime = getCurrentTime();
+        long delta = currentTime - lastFrame;
+        lastFrame = getCurrentTime();
+        return delta;
+    }
 
     /**
      * Used to initialize resources.
@@ -72,26 +93,5 @@ public abstract class AbstractGameLoop {
         }
 
         shutdown();
-    }
-
-    /**
-     * Get the current time, in millis.
-     *
-     * @return the current time.
-     */
-    private static long getCurrentTime() {
-        return (Sys.getTime() * 1000) / Sys.getTimerResolution();
-    }
-
-    /**
-     * Compute time between each frame.
-     *
-     * @return the delta time.
-     */
-    private static long getDelta() {
-        long currentTime = getCurrentTime();
-        long delta = (long) currentTime - (long) lastFrame;
-        lastFrame = getCurrentTime();
-        return delta;
     }
 }

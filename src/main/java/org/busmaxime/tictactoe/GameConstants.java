@@ -1,7 +1,6 @@
 package org.busmaxime.tictactoe;
 
 /**
- *
  * @author maxime
  */
 public class GameConstants {

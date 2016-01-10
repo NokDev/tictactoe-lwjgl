@@ -1,8 +1,9 @@
-package org.busmaxime.tictactoe.renderers;
+package org.busmaxime.tictactoe.infrastructure.lwjgl.renderers;
 
-import java.io.IOException;
-import org.busmaxime.tictactoe.domain.board.Board;
 import org.busmaxime.tictactoe.GameConstants;
+import org.busmaxime.tictactoe.domain.board.Board;
+import org.busmaxime.tictactoe.domain.board.CaseValue;
+import org.busmaxime.tictactoe.infrastructure.lwjgl.model.Cursor;
 import org.lwjgl.LWJGLException;
 import org.lwjgl.opengl.Display;
 import org.lwjgl.opengl.DisplayMode;
@@ -10,8 +11,9 @@ import org.lwjgl.opengl.GL11;
 import org.newdawn.slick.opengl.Texture;
 import org.newdawn.slick.opengl.TextureLoader;
 
+import java.io.IOException;
+
 /**
- *
  * @author maxime
  */
 public class BoardRenderer {
@@ -23,9 +25,6 @@ public class BoardRenderer {
 
     /**
      * Create the main window in which all the elements will be drawn. It also activate openGL options like enabling alpha channel for PNG.
-     *
-     * @param width
-     * @param height
      */
     public BoardRenderer(int width, int height) {
         try {
@@ -54,7 +53,7 @@ public class BoardRenderer {
         GL11.glMatrixMode(GL11.GL_MODELVIEW);
     }
 
-    public void draw(Board board) {
+    public void draw(Board board, Cursor cursor) {
         GL11.glClear(GL11.GL_COLOR_BUFFER_BIT | GL11.GL_DEPTH_BUFFER_BIT);
 
         int rows = board.getRows();
@@ -64,15 +63,15 @@ public class BoardRenderer {
             for (int column = 0; column < columns; column++) {
                 Renderer.draw(caseTexture, row, column);
 
-                if (board.getStateAt(row, column) == 1) {
+                if (board.getStateAt(row, column) == CaseValue.CIRCLE) {
                     Renderer.draw(circleTexture, row, column);
-                } else if (board.getStateAt(row, column) == 2) {
+                } else if (board.getStateAt(row, column) == CaseValue.CROSS) {
                     Renderer.draw(crossTexture, row, column);
                 }
             }
         }
 
-        Renderer.draw(cursorTexture, board.getRowCursor(), board.getColumnCursor());
+        Renderer.draw(cursorTexture, cursor.getRow(), cursor.getColumn());
 
         Display.update();
     }

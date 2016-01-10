@@ -1,25 +1,36 @@
-package org.busmaxime.tictactoe;
+package org.busmaxime.tictactoe.infrastructure.lwjgl;
 
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import org.busmaxime.tictactoe.domain.board.CaseAlreadyFilledException;
+import org.busmaxime.tictactoe.GameConstants;
 import org.busmaxime.tictactoe.domain.board.Board;
-import org.busmaxime.tictactoe.renderers.BoardRenderer;
+import org.busmaxime.tictactoe.domain.board.CaseAlreadyFilledException;
+import org.busmaxime.tictactoe.domain.board.CaseValue;
+import org.busmaxime.tictactoe.infrastructure.lwjgl.model.Cursor;
+import org.busmaxime.tictactoe.infrastructure.lwjgl.renderers.BoardRenderer;
 import org.lwjgl.input.Keyboard;
 import org.lwjgl.opengl.Display;
 
-public class Game extends AbstractGameLoop {
-    private static final Logger LOGGER = Logger.getLogger(Game.class.getName());
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
+public class LwjglGame extends AbstractGameLoop {
+    private static final Logger LOGGER = Logger.getLogger(LwjglGame.class.getName());
 
     private BoardRenderer boardRenderer;
-    private int win = 0;
+    private CaseValue win = CaseValue.EMPTY;
     private Board board = null;
     private boolean playerOneTurn = true;
+    private Cursor cursor = null;
+
+    public static void main(String[] argv) {
+        LwjglGame lwjglGame = new LwjglGame();
+        lwjglGame.run();
+    }
 
     @Override
     public void init() {
         boardRenderer = new BoardRenderer(GameConstants.WINDOW_WIDTH, GameConstants.WINDOW_HEIGHT);
         board = new Board(GameConstants.ROWS, GameConstants.COLUMNS);
+        cursor = new Cursor(0, 0, board);
     }
 
     @Override
@@ -31,7 +42,7 @@ public class Game extends AbstractGameLoop {
 
         win = board.getWinner();
 
-        if (win != 0) {
+        if (win != CaseValue.EMPTY) {
             if (Keyboard.next()) {
                 if (Keyboard.getEventKeyState()) {
                     if (Keyboard.getEventKey() == Keyboard.KEY_SPACE) {
@@ -49,24 +60,24 @@ public class Game extends AbstractGameLoop {
         if (Keyboard.next()) {
             if (Keyboard.getEventKeyState()) {
                 if (Keyboard.getEventKey() == Keyboard.KEY_UP) {
-                    board.moveCursorBy(0, 1);
+                    cursor.increaseRowToOneUnit();
                 }
                 if (Keyboard.getEventKey() == Keyboard.KEY_DOWN) {
-                    board.moveCursorBy(0, -1);
+                    cursor.decreaseRowToOneUnit();
                 }
                 if (Keyboard.getEventKey() == Keyboard.KEY_LEFT) {
-                    board.moveCursorBy(-1, 0);
+                    cursor.decreaseColumnToOneUnit();
                 }
                 if (Keyboard.getEventKey() == Keyboard.KEY_RIGHT) {
-                    board.moveCursorBy(1, 0);
+                    cursor.increaseColumnToOneUnit();
                 }
                 if (Keyboard.getEventKey() == Keyboard.KEY_SPACE) {
                     try {
                         if (playerOneTurn) {
-                            board.setStateAtCursorPosition(1);
+                            board.setStateAt(cursor.getRow(), cursor.getColumn(), CaseValue.CIRCLE);
                             playerOneTurn = false;
                         } else {
-                            board.setStateAtCursorPosition(2);
+                            board.setStateAt(cursor.getRow(), cursor.getColumn(), CaseValue.CROSS);
                             playerOneTurn = true;
                         }
                     } catch (CaseAlreadyFilledException cafe) {
@@ -79,17 +90,11 @@ public class Game extends AbstractGameLoop {
 
     @Override
     public void draw() {
-        boardRenderer.draw(board);
+        boardRenderer.draw(board, cursor);
     }
 
     @Override
     public void shutdown() {
         boardRenderer.shutdown();
     }
-
-    public static void main(String[] argv) {
-        Game game = new Game();
-        game.run();
-    }
-
 }
