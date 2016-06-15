@@ -28,3 +28,4 @@ The game is not finished yet. But these features may appear later :
 - set the number of symbols that is required to win a game.
 - play against the computer. (dumb AI or not).
 - play on network.
+- have fun!
